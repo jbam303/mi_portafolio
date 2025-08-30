@@ -1,16 +1,22 @@
 from django.shortcuts import render
+from django.templatetags.static import static
 from datetime import datetime
 
 # Create your views here.
 def index(request):
     hora = datetime.now().hour
-    if hora < 12:
+    if hora < 12 and hora >= 6:
+        fondo = static("images/fondo-amanecer.png")
         saludo = "Buenos días!!"
-    elif hora < 19:
+    elif hora > 12 and hora < 19:
+        fondo = static("images/fondo-atardecer.png")
         saludo = "Buenas tardes!!"
     else:
+        fondo = static("images/fondo-anochecer.png")
         saludo = "Buenas noches!!"
-    return render(request, 'index.html', {'saludo': saludo})
+    return render(request, 'index.html', {'saludo': saludo, 'fondo': fondo})
+
+
 
 def proyectos(request):
     projects = [

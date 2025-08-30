@@ -6,15 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <title>Contacto</title>
+    <style>
+        html,body {
+                background-image: url('{% static "images/fondo-proyectos.jpg" %}');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                min-height: 100vh;
+                overscroll-behavior:none;
+            }
+        nav{
+            background:  rgba(34, 19, 95, 0.6);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            top: 0;              
+            left: 0;
+            width: 100%;        
+            padding: 15px 30px;
+        }
+        .container {
+            margin-top: 100px; 
+            max-width: 600px; 
+            background: rgba(255,255,255,0.7); 
+            padding: 20px; 
+            border-radius: 10px; 
+            backdrop-filter: blur(5px);
+        }
+    </style>
 </head>
 <body>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    </div>
-    <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-semibold fs-2" href="/">Inicio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/proyectos">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Direccion de correo</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@xxxxx.com">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
     </div>
 </body>
 <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>

@@ -8,18 +8,27 @@
     <title>Mi portafolio</title>
         <style>
             html,body {
-                background: linear-gradient(135deg, #a18fff 0%, #7f5fff 40%, #c084fc 100%);
+                background-image: url('{{fondo}}');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
                 min-height: 100vh;
                 overscroll-behavior: none;
             }
             .profile-card {
+                
                 background: rgba(255,255,255,0.7);
-                backdrop-filter: blur(8px);
+                backdrop-filter: blur(2px);
                 border-radius: 1rem;
                 box-shadow: 0 8px 32px rgba(127,95,255,0.15);
                 padding: 2rem;
                 max-width: 400px;
                 margin: auto;
+            }
+            .profile-card:hover {
+                box-shadow: 0 12px 48px rgba(127,95,255,0.25);
+                transform: translateY(-4px) scale(1.02);
+                transition: all 0.3s ease;
             }
             .profile-img {
                 width: 120px;
