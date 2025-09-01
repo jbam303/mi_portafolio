@@ -5,10 +5,10 @@ from datetime import datetime
 # Create your views here.
 def index(request):
     hora = datetime.now().hour
-    if hora < 12 and hora >= 6:
+    if hora >= 6 and hora <= 12:
         fondo = static("images/fondo-amanecer.png")
         saludo = "Buenos días!!"
-    elif hora > 12 and hora < 19:
+    elif hora > 12 and hora <= 19:
         fondo = static("images/fondo-atardecer.png")
         saludo = "Buenas tardes!!"
     else:
@@ -16,15 +16,18 @@ def index(request):
         saludo = "Buenas noches!!"
     return render(request, 'index.html', {'saludo': saludo, 'fondo': fondo})
 
-
+projects = [
+        { "title": "Ayuda Gestor Stock", "description": "Aplicacion para ayudar a gestionar el stock en Botilleria HangaRoa", "in_progress": True, "image": "images/gestor-stock.png" },
+        { "title": "Calculadora", "description": "Pequeña calculadora con interfaz grafica con pyside", "in_progress": True, "image": "images/Calculadora.png" },
+        { "title": "Portafolio Utilizando Tailwind css", "description": "Este Portafolio es para practicar Tailwind css utilizando vite y react", "in_progress": True, "image": "images/portafolio_tws.png" }
+    ]
 
 def proyectos(request):
-    projects = [
-        { "title": "Proyecto 1", "description": "Descripción del proyecto 1", "in_progress": True, "image": "images/johan.jpg" },
-        { "title": "Proyecto 2", "description": "Descripción del proyecto 2", "in_progress": False, "image": "images/johan.jpg" },
-        { "title": "Proyecto 3", "description": "Descripción del proyecto 3 ", "in_progress": True, "image": "images/johan.jpg" }
-    ]
-    return render(request, 'proyectos.html', {'projects': projects})
+    proyectos_activos = [p for p in projects if p["in_progress"]]
+    return render(request, 'proyectos.html', {'projects': proyectos_activos})
+
+
+
 
 def contacto(request):
     return render(request, 'contacto.html')
