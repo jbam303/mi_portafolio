@@ -32,6 +32,11 @@
             border-radius: 10px; 
             backdrop-filter: blur(5px);
         }
+        @keyframes btnAnim {
+            0% { opacity: 0; }
+            30% { opacity: 1; }
+            100% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -44,10 +49,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/contacto">Proyectos</a>
+                        <a class="nav-link" href="/proyectos">Proyectos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/proyectos">Contacto</a>
+                        <a class="nav-link active" aria-current="page" href="/contacto">Contacto</a>
                         
                     </li>
                 </ul>
@@ -55,21 +60,27 @@
         </div>
     </nav>
     <div class="container">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tu nombre">
-
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Direccion de correo</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@xxxxx.com">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
+        <form id="contactForm" method="POST" autocomplete="off">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="correo" class="form-label">Dirección de correo</label>
+                <input type="email" class="form-control" id="correo" name="correo" placeholder="nombre@xxxxx.com" required>
+            </div>
+            <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" rows="3" required></textarea>
+            </div>
+            <button type="submit" id="btnEnviar" class="btn btn-primary position-relative overflow-hidden">
+                <span id="btnText">Enviar</span>
+                <span id="btnAnim" style="display:none; position:absolute; left:0; top:0; width:100%; height:100%; background:rgba(127,95,255,0.15); animation: btnAnim 0.7s linear forwards;"></span>
+            </button>
+        </form>
+        
     </div>
 </body>
 <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-</script>
 </html>
